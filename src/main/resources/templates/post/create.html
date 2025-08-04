@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>detail</title>
+</head>
+<body>
+create 파일입니다.
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>post create</title>-->
+<!--    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--create-->
+<!--<div>-->
+<!--    title : <input type="text" id="input_title"/> <br/>-->
+<!--    content : <input type="text" id="input_content"/> <br/>-->
+
+<!--    <script>-->
+<!--        let tempFile = null;-->
+<!--        function readURLFile(input) {-->
+<!--            if (input.files && input.files[0]) {-->
+<!--                let reader = new FileReader();-->
+<!--                reader.readAsDataURL(input.files[0]);-->
+<!--                reader.onload = function(e) {-->
+<!--                    alert(input.files[0].name);-->
+<!--                    tempFile = input.files[0];-->
+<!--                }-->
+<!--            }-->
+<!--        }-->
+
+<!--        function remove_img(obj_this) {-->
+<!--            //alert(111);-->
+<!--            //alert($(obj_this).html());-->
+<!--            ($(obj_this).parent()).remove();-->
+<!--        }-->
+<!--        function uploadFile() {-->
+
+<!--            if(tempFile == null){-->
+<!--                alert("파일 비었습니다!!");-->
+<!--                return false;-->
+<!--            }-->
+<!--            let fileData = new FormData();-->
+<!--            fileData.append("file", tempFile);-->
+
+<!--            $.ajax({-->
+<!--                url: "/api/default/uploadFile",-->
+<!--                type: "POST",-->
+<!--                data: fileData ,-->
+<!--                cache : false,-->
+<!--                contentType : false,-->
+<!--                processData : false,-->
+<!--                success: (data, status, xhr)=>{-->
+<!--                    alert(data);-->
+<!--                    $("#div_img_list").append(-->
+<!--                        "<div>"-->
+<!--                      + "<input class='board_imgs' value='"+ data +"'/>"-->
+<!--                      + "<img style='height:100px' src='"+"/image/" + data+"'/>"-->
+<!--                      + "<button onclick='remove_img(this)'>삭제</button>"-->
+<!--                       + "</div>"-->
+<!--                    );-->
+<!--                },-->
+<!--                error: (data)=>{-->
+<!--                    alert("error")-->
+<!--                },-->
+<!--            });-->
+
+<!--        }-->
+<!--    </script>-->
+
+
+
+<!--    <button onclick="createBoard()">작성하기!</button>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    function createBoard(){-->
+
+<!--        let refreshToken = localStorage.getItem("RefreshToken");-->
+<!--        if(refreshToken == null){-->
+<!--            alert("로그인 이전입니다. 로그인먼저 해주세요.");-->
+<!--            location.replace("/user/login");-->
+<!--            return false;-->
+<!--        }-->
+
+<!--        let _data = {-->
+<!--            title : $("#input_title").val(),-->
+<!--            content : $("#input_content").val()-->
+<!--        };-->
+
+<!--        let board_imgs = $(".board_imgs");-->
+<!--        let imgs = [];-->
+<!--        for(let each of board_imgs){-->
+<!--            imgs.push($(each).val());-->
+<!--        }-->
+<!--        _data["imgs"] = imgs;-->
+
+<!--        $.ajax({-->
+<!--            url: "/api/board",-->
+<!--            method: "POST",-->
+<!--            contentType : 'application/json; charset=utf-8',-->
+<!--            headers : {-->
+<!--                "Authorization" : localStorage.getItem("AccessToken")-->
+<!--            },-->
+<!--            data: JSON.stringify(_data),-->
+<!--            success: (data, status, xhr)=>{-->
+<!--                alert(JSON.stringify(data));-->
+<!--                //$("#p_result").html(result);-->
+<!--            },-->
+<!--            error: (data, status, xhr)=>{-->
+<!--                alert(JSON.stringify(data));-->
+<!--            },-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
